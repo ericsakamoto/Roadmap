@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Roadmap - Dashboard</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/navbar-fixed/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- AngularJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+  </head>
+  <body ng-app="RoadmapDashboardApp" ng-controller="RoadmapDashboardController">
+    
+    <nav id="main_nav" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="dashboard.html">Roadmap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto text-right">
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="signOut">
+              <img src="images/signout.jpg" alt="Signout" height="30" width="30" class="bg-dark">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--Main view -->
+    <main role="main" class="container">
+      <div class="jumbotron" id="dashboard">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm text-left">
+              <h1>{{message}}</h1>
+            </div>
+            <div class="col-sm">
+              <div class="text-right">
+                <button type="button" class="btn btn-secondary bt-small" data-toggle="modal" data-target="#criarRoadmapModal">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-columns">
+          <!--
+          <div ng-repeat="roadmap in roadmaps" class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+
+                <div class="card-body">
+                  <h5 class="card-title">{{ roadmap.nome }}</h5>
+                  <p class="card-text">{{ roadmap.descricao }}</p>
+                  <button type="button" class="btn btn-secondary btn-sm" ng-click="abrirMilestones(roadmap.idRoadmap)">Detalhes</button>
+                  <p class="card-text"><small class="text-muted">Criado em {{roadmap.RequestTime}}</small></p>
+                </div>
+
+            </div>
+          </div>
+          -->          
+          <div ng-repeat="roadmap in roadmaps" class="card border-secondary mb-2" style="max-width: 18rem;">
+            <div class="card-header">{{ roadmap.nome }}</div>
+            <div class="card-body text-secondary">
+              <p class="card-text"><small>{{ roadmap.descricao }}</small></p>
+              <button type="button" class="btn btn-secondary btn-sm" ng-click="abrirMilestones(roadmap.idRoadmap)">Detalhes</button>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </main>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="criarRoadmapModal" tabindex="-1" role="dialog" aria-labelledby="criarRoadmapModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <h5 class="modal-title" id="criarRoadmapModalLabel">Criar roadmap</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                  <label for="inputNomeRoadmap" class="col-sm-2 col-form-label">Nome</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputNomeRoadmap" placeholder="Nome" ng-model="roadmap.nome">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputDescRoadmap" class="col-sm-2 col-form-label">Descricao</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputDescRoadmap" placeholder="Descricao" ng-model="roadmap.descricao">
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="salvarRoadmap()">Salvar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/vendor/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+    <script src="js/vendor/jquery-3.1.0.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/aws-cognito-sdk.min.js"></script>
+    <script src="js/vendor/amazon-cognito-identity.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/cognito-auth.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

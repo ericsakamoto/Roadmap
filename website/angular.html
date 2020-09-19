@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+        <link href="css/dashboard.css" rel="stylesheet">
+    </head>
+    <body ng-app="RoadmapDashboardApp" ng-controller="RoadmapDashboardController">
+        <h1>{{message}}</h1>
+
+        <button id="request" class="btn btn-primary">Get roadmaps</button>
+
+        <p>{{roadmaps[0].nome}}</p>
+
+        <div class="card-deck">
+            <div ng-repeat="x in roadmaps" class="card mb-3" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="images/viagem.jpg" class="card-img-top" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ x.nome }}</h5>
+                    <p class="card-text">{{ x.descricao }}</p>
+                    <a href="teste.html" class="btn btn-primary">Detalhes</a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="js/vendor/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    
+        <script src="js/vendor/jquery-3.1.0.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/aws-cognito-sdk.min.js"></script>
+        <script src="js/vendor/amazon-cognito-identity.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/cognito-auth.js"></script>
+        <script src="js/myangular.js"></script>
+
+    </body>
+</html>
