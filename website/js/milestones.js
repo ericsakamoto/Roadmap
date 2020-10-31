@@ -41,10 +41,10 @@ var Roadmap = window.Roadmap || {};
         };
 
         $scope.inserirMilestone = function(roadmapid) {
+            console.log("inserirMilestone")
             $('#criarMilestoneModal').modal('hide');
             inserirMilestone($scope,$http,roadmapid)
         };
-
     });
     
 
@@ -149,5 +149,18 @@ var Roadmap = window.Roadmap || {};
     function displayUpdate(text) {
         $('#updates').append($('<li>' + text + '</li>'));
     }
-
+      
 }(jQuery));
+
+$(document).ready(function() {
+    
+    $('#back').click(function() {
+        console.log("back clicked");
+        window.location = "dashboard.html";
+    });        
+
+    $('[data-toggle="popover"]').popover(); 
+
+});
+
+

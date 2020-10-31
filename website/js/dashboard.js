@@ -21,7 +21,7 @@ var Roadmap = window.Roadmap || {};
     // Angular Application and Controller for Dashboard
     var app = angular.module('RoadmapDashboardApp', []);
     app.controller('RoadmapDashboardController', function($scope,$http,$window,$location) {
-        $scope.message= "Dashboard";
+        //$scope.message= "Dashboard";
         
         getRoadmaps($scope,$http);
         
@@ -111,4 +111,9 @@ var Roadmap = window.Roadmap || {};
         $('#updates').append($('<li>' + text + '</li>'));
     }
 
+    function changeCursor() {
+        console.log("mouse over");
+    }
+    
 }(jQuery));
+
